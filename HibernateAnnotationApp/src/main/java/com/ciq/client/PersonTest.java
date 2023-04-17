@@ -32,7 +32,7 @@ public class PersonTest {
 		Person person3 = new Person("sita", "sr", "sita@ciq.com", date3);
 //		session.persist(person3);
 //		session.getTransaction().commit();
-		Person p = session.get(Person.class, 1l);
+		Person p = (Person) session.get(Person.class, 1l);
 		System.out.println(p);
 
 		System.out.println("start HQL----------------------------");
@@ -45,7 +45,7 @@ public class PersonTest {
 		
 		System.out.println("start NativeSQl----------------------------");
 		// hibernate query language(HQL)
-		Query query2 = session.createNativeQuery("select * from persons");
+		Query query2 = session.createSQLQuery("select * from persons");
 		List<Object[]> prs = query2.list();
 		for (Object[] objects : prs) {
 			System.out.println(objects[0]);
