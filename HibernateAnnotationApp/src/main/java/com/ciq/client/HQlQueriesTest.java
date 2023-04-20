@@ -21,7 +21,9 @@ public class HQlQueriesTest {
 	}
 
 	public static void getAllPersons() {
+		
 		Session session = HibernateUtil.getSession();
+		session.beginTransaction().commit();
 		String selectAll = "from Person";
 		 
 		Stream<Person> persons = (Stream<Person>) session.createQuery(selectAll).list();
